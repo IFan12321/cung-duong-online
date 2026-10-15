@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đền Thờ Quan Công - Cầu An & Cúng dường</title>
+    <title>Đền Thờ Quan Công - Cầu An</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&family=Playfair+Display:ital,wght@1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -79,7 +79,7 @@
             z-index: 10;
         }
 
-        /* 3 cây nhang to hơn */
+        /* 3 cây nhang to */
         .sticks-group {
             display: flex;
             gap: 12px;
@@ -94,15 +94,15 @@
         }
 
         .stick {
-            width: 5px; /* Làm nhang to hơn rõ rệt */
-            height: 55px; /* Tăng chiều dài nhang */
+            width: 5px;
+            height: 55px;
             background: linear-gradient(to bottom, #d2691e, #652b0c);
             position: relative;
             border-radius: 2px;
             box-shadow: 0 0 4px rgba(0,0,0,0.8);
         }
 
-        /* Đầu nhang đỏ lửa lớn hơn và phát sáng mạnh */
+        /* Đầu nhang đỏ lửa lớn phát sáng */
         .stick::before {
             content: '';
             position: absolute;
@@ -121,7 +121,7 @@
             100% { opacity: 1; transform: scale(1.4); }
         }
 
-        /* Hiệu ứng khói nhang dày và bay nhiều hơn */
+        /* Hiệu ứng khói nhang dày bay lên */
         .smoke-group {
             position: absolute;
             bottom: 45px;
@@ -252,4 +252,52 @@
 
     <!-- Khung Bàn Thờ -->
     <div class="shrine-wrapper">
-        <img class="shrine-img" src="quancong.jpg" alt
+        <img class="shrine-img" src="https://image.pollinations.ai/prompt/A%20sacred%20and%20majestic%20front-facing%20altar%20temple%20of%20Guan%20Gong%20reading%20a%20book%20sitting%20on%20an%20ornate%20wooden%20chair,%20behind%20him%20stands%20the%20legendary%20Green%20Dragon%20Crescent%20Blade.%20Warm%20golden%20lighting,%20incense%20burner%20on%20the%20table%20in%20front,%20red%20lanterns,%20traditional%20Vietnamese%20Chinese%20temple%20architecture,%20ultra-realistic,%204k?width=1200&height=675&nologo=true" alt="Đền Thờ Quan Công Đọc Sách">
+        
+        <!-- Vị trí 3 nén nhang to & làn khói dày đặc -->
+        <div class="incense-position">
+            <div class="smoke-group" id="smokeGroup">
+                <div class="smoke-particle"></div>
+                <div class="smoke-particle"></div>
+                <div class="smoke-particle"></div>
+            </div>
+            <div class="sticks-group" id="sticksGroup">
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bảng tương tác -->
+    <div class="control-box">
+        <h2>NHẬP LỜI NGUYỆN ƯỚC THÀNH TÂM</h2>
+        <textarea id="wishInput" class="wish-textarea" placeholder="Ví dụ: Cầu mong gia đạo bình an, công việc hanh thông, vạn sự cát tường..."></textarea>
+        <button class="btn-incense" onclick="thapNhang()">🙏 Thắp Nhang & Gửi Nguyện Ước</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function thapNhang() {
+            const wish = document.getElementById('wishInput').value.trim();
+            const sticksGroup = document.getElementById('sticksGroup');
+            const smokeGroup = document.getElementById('smokeGroup');
+            const message = document.getElementById('message');
+
+            if (!wish) {
+                message.style.color = '#ff6b6b';
+                message.innerText = 'Vui lòng nhập lời nguyện ước trước khi thắp nhang!';
+                return;
+            }
+
+            // Hiển thị 3 nén nhang to và khói bốc lên ngút ngàn
+            sticksGroup.classList.add('active');
+            smokeGroup.classList.add('active');
+
+            message.style.color = '#00ffcc';
+            message.innerText = '✨ Đã thành tâm thắp 3 nén nhang lớn. Cầu mong nguyện ước của bạn được Quan Thánh chứng giám!';
+        }
+    </script>
+
+</body>
+</html>
