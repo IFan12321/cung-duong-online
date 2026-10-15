@@ -33,7 +33,7 @@
             overflow: hidden;
         }
 
-        /* --- MÁI ĐỀN THỜ --- */
+        /* --- MÁI ĐỀN --- */
         .roof-header {
             background: linear-gradient(to bottom, #8b0000, #4a0000);
             text-align: center;
@@ -56,7 +56,7 @@
             font-style: italic;
         }
 
-        /* --- ĐIỆN THỜ QUAN CÔNG CHÍNH DIỆN --- */
+        /* --- ĐIỆN THỜ CHÍNH --- */
         .shrine-scene {
             position: relative;
             width: 100%;
@@ -69,7 +69,6 @@
             overflow: hidden;
         }
 
-        /* Hoành Phi & Câu Đối 2 Bên */
         .hoanh-phi {
             position: absolute;
             top: 15px;
@@ -108,7 +107,7 @@
             letter-spacing: 4px;
         }
 
-        /* KHU VỰC TƯỢNG QUAN CÔNG & THANH LONG ĐAO */
+        /* KHU VỰC TƯỢNG QUAN CÔNG & THANH LONG ĐAO (ĐÃ TỐI ƯU SVG) */
         .statue-box {
             position: absolute;
             top: 55px;
@@ -134,7 +133,6 @@
             z-index: 10;
         }
 
-        /* Lư Hương & Nhang */
         .burner-wrap {
             position: relative;
             top: -32px;
@@ -178,7 +176,6 @@
             box-shadow: 0 0 8px #ff4d4d, 0 0 12px #fffa65;
         }
 
-        /* Khói nhang bay lên */
         .smoke-particle {
             position: absolute;
             top: -20px;
@@ -263,20 +260,17 @@
 <body>
 
     <div class="temple-wrapper">
-        <!-- Mái Đền -->
         <div class="roof-header">
             <div class="temple-title">QUAN THÁNH ĐẾ QUÂN MIẾU</div>
             <div class="couplet-sub">Nghĩa Khí Thiên Thu — Trung Tín Lừng Danh</div>
         </div>
 
-        <!-- Điện Thờ Chính Diễn -->
         <div class="shrine-scene">
             <div class="hoanh-phi">NGHĨA KHÍ THIÊN THU</div>
             
             <div class="pillar-left"><div class="pillar-text">CHÍ TRUNG QUAN PHONG VÂN</div></div>
             <div class="pillar-right"><div class="pillar-text">NGHĨA KHÍ BẠC TẬP TẦN</div></div>
 
-            <!-- Tượng Quan Công Đọc Sách & Thanh Long Yển Nguyệt Đao VẼ SVG ĐẸP TRỰC TIẾP -->
             <div class="statue-box">
                 <svg viewBox="0 0 300 280" width="100%" height="100%">
                     <defs>
@@ -291,7 +285,7 @@
                         </linearGradient>
                     </defs>
 
-                    <!-- THANH LONG YỂN NGUYỆT ĐAO (Phía Sau Lưng) -->
+                    <!-- THANH LONG YỂN NGUYỆT ĐAO -->
                     <g id="blade">
                         <rect x="230" y="10" width="8" height="250" fill="#4e342e" rx="2"/>
                         <circle cx="234" cy="40" r="10" fill="url(#goldGrad)"/>
@@ -299,28 +293,16 @@
                         <path d="M230,48 L218,70 L234,65 Z" fill="#d32f2f"/>
                     </g>
 
-                    <!-- QUAN CÔNG NGỒI ĐỌC SÁCH XUÂN THU -->
+                    <!-- QUAN CÔNG ĐỌC SÁCH -->
                     <g id="guanyu">
-                        <!-- Áo Lục Bào -->
                         <path d="M70,110 C90,80 210,80 230,110 L250,260 C250,270 50,270 50,260 Z" fill="#2e7d32" stroke="#ffd700" stroke-width="2"/>
-                        <!-- Giáp ngực vàng -->
                         <path d="M115,110 L185,110 L180,175 L120,175 Z" fill="url(#goldGrad)" stroke="#b76e00" stroke-width="1"/>
-                        
-                        <!-- Khuôn mặt đỏ gấc -->
                         <path d="M120,55 C120,30 180,30 180,55 L175,100 C175,112 125,112 125,100 Z" fill="#c62828"/>
-                        
-                        <!-- Mũ Khôi xanh -->
                         <path d="M115,48 C115,25 185,25 185,48 Z" fill="#004d40" stroke="#ffd700" stroke-width="2"/>
                         <rect x="142" y="18" width="16" height="15" fill="#ffd700"/>
-
-                        <!-- Mắt phụng & Lông mày rồng -->
                         <path d="M130,52 Q142,45 148,50" stroke="#000" stroke-width="3" fill="none"/>
                         <path d="M162,50 Q168,45 180,52" stroke="#000" stroke-width="3" fill="none"/>
-
-                        <!-- Râu dài 5 chòm -->
                         <path d="M130,80 Q150,170 152,220 Q154,170 170,80 Z" fill="#111"/>
-
-                        <!-- Tay & Quyển Sách Xuân Thu -->
                         <path d="M85,145 Q115,155 135,165" stroke="#2e7d32" stroke-width="16" stroke-linecap="round"/>
                         <rect x="125" y="145" width="38" height="50" fill="#fffde7" stroke="#4e342e" stroke-width="2" transform="rotate(-8 125 145)"/>
                         <line x1="133" y1="152" x2="133" y2="187" stroke="#c62828" stroke-width="2" transform="rotate(-8 125 145)"/>
@@ -330,10 +312,8 @@
                 </svg>
             </div>
 
-            <!-- BÀN THỜ VÀ LƯ HƯƠNG ĐỒNG VẼ SVG -->
             <div class="altar-table">
                 <div class="burner-wrap">
-                    <!-- 3 Cây nhang + Khói -->
                     <div class="incense-sticks" id="incenseSticks">
                         <div class="stick s1"></div>
                         <div class="stick s2"></div>
@@ -343,7 +323,6 @@
                         <div class="smoke-particle"></div>
                     </div>
 
-                    <!-- Lư Hương Đồng SVG -->
                     <svg viewBox="0 0 100 70" width="100%" height="100%">
                         <path d="M20,52 L10,66 L25,63 Z" fill="#b8860b"/>
                         <path d="M80,52 L90,66 L75,63 Z" fill="#b8860b"/>
@@ -355,7 +334,6 @@
             </div>
         </div>
 
-        <!-- Ô Nhập Nguyện Ước -->
         <div class="control-panel">
             <textarea id="wishInput" placeholder="Nhập nguyện ước của bạn gửi đến Quan Thánh Đế Quân..."></textarea>
             <br>
@@ -364,10 +342,10 @@
         </div>
     </div>
 
-    <!-- Nhạc hòa tấu đính kèm -->
+    <!-- Nhạc nền trực tuyến không sợ lỗi file -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="Bông Cỏ May New Hòa Tấu.mp3" type="audio/mpeg">
-        <source src="nhac.mp3" type="audio/mpeg">
+        <source src="https://actions.google.com/sounds/v1/ambiences/asian_market_or_temple.ogg" type="audio/ogg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -382,22 +360,14 @@
                 return;
             }
 
-            // Hiện 3 cây nhang và khói bay
             incenseSticks.style.display = 'block';
             incenseSticks.classList.add('active-smoke');
 
-            // Bật nhạc nền
             music.play().catch(err => {
-                console.log("Trình duyệt hạn chế tự động phát nhạc.");
+                console.log("Trình duyệt chặn phát âm thanh tự động.");
             });
 
-            // Hiển thị thông báo
             statusMessage.innerHTML = "🙏 Nguyện ước của bạn đã được Quan Thánh Đế Quân chứng giám!";
-            
-            // Xóa ô văn bản
             document.getElementById('wishInput').value = "";
         }
-    </script>
-
-</body>
-</html>
+    </
