@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đền Thờ Quan Công - Cầu An & Cúng Dường</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Đền Thờ Quan Công Online - Cầu An & Chiêm Bái</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -14,84 +14,104 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #0b0704;
+            background-color: #0d0805;
             color: #f3e5ab;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Background Shrine */
-        .shrine-container {
+        /* Khung hiển thị đền thờ */
+        .shrine-wrapper {
             position: relative;
             width: 100%;
-            max-width: 1200px;
-            height: 600px;
-            background: url('https://image.pollinations.ai/prompt/A%20sacred%20and%20majestic%20front-facing%20altar%20temple%20of%20Guan%20Gong%20(Quan%20Cong)%20reading%20a%20book%20sitting%20on%20an%20ornate%20wooden%20chair,%20behind%20him%20stands%20the%20legendary%20Green%20Dragon%20Crescent%20Blade%20(Thanh%20Long%20Yen%20Nguyet%20Dao).%20Warm%20golden%20lighting,%20incense%20burner%20on%20the%20table%20in%20front,%20red%20lanterns,%20traditional%20Vietnamese%20Chinese%20temple%20architecture,%20ultra-realistic,%204k%20resolution,%20cinematic%20lighting?width=1200&height=600&nologo=true') no-repeat center center;
-            background-size: cover;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-            border-bottom: 4px solid #d4af37;
+            max-width: 1000px;
+            aspect-ratio: 16 / 9;
+            margin: 15px auto 0 auto;
+            border: 3px solid #d4af37;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 20px rgba(212, 175, 55, 0.3);
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        /* Bức ảnh đền thờ góc chính diện */
+        .shrine-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Vùng hiệu ứng nhang cắm đúng lư hương */
+        .incense-position {
+            position: absolute;
+            left: 50%;
+            bottom: 24.5%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px;
-        }
-
-        .shrine-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(11,7,4,0.85) 100%);
             pointer-events: none;
+            z-index: 10;
         }
 
-        .header-title {
+        /* 3 nén nhang */
+        .sticks-group {
+            display: flex;
+            gap: 6px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .sticks-group.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stick {
+            width: 3px;
+            height: 38px;
+            background: linear-gradient(to bottom, #d2691e, #8b4513);
             position: relative;
-            z-index: 2;
-            text-align: center;
-            margin-top: 10px;
+            border-radius: 1px;
         }
 
-        .header-title h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            color: #ffd700;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 20px rgba(255, 215, 0, 0.5);
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+        /* Đốm lửa đỏ ở đầu nhang */
+        .stick::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -1.5px;
+            width: 6px;
+            height: 6px;
+            background: #ff3300;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #ff4500, 0 0 12px #ff0000;
+            animation: glow 1.2s infinite alternate ease-in-out;
         }
 
-        .header-title p {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: #f1e0ac;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+        @keyframes glow {
+            0% { opacity: 0.7; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.3); }
         }
 
-        /* Control Panel / Offering Section */
-        .control-panel {
-            position: relative;
-            z-index: 2;
-            width: 90%;
-            max-width: 650px;
-            background: rgba(20, 12, 6, 0.85);
-            border: 2px solid #d4af37;
-            border-radius: 12px;
-            padding: 25px;
-            margin: -60px auto 40px auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 0 15px rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(5px);
+        /* Khói nhang bay lên */
+        .smoke-group {
+            position: absolute;
+            bottom: 30px;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .smoke-group.active {
+            opacity: 1;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 1rem;
-            font-weight
+        .smoke-particle {
+            width:
