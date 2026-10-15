@@ -226,4 +226,247 @@
         .active-smoke .smoke-particle {
             animation: burnSmoke 3s infinite ease-out;
         }
-        .active-smoke .smoke-particle:nth-child(2) { animation
+        .active-smoke .smoke-particle:nth-child(2) { animation-delay: 1s; }
+        .active-smoke .smoke-particle:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes burnSmoke {
+            0% { transform: translate(-50%, 0) scale(0.6); opacity: 0; }
+            30% { opacity: 0.6; }
+            100% { transform: translate(calc(-50% + 20px), -80px) scale(2.5); opacity: 0; }
+        }
+
+        /* --- BẢNG ĐIỀU KHIỂN & LỜI KHẤN --- */
+        .control-panel {
+            padding: 25px 20px;
+            background: #230902;
+            text-align: center;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #ffd700;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            height: 90px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            background: #120401;
+            color: #fff8dc;
+            font-family: 'Noto Serif', serif;
+            font-size: 15px;
+            resize: none;
+            outline: none;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+        }
+
+        textarea:focus {
+            border-color: #f39c12;
+            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        }
+
+        .btn-thap-nhang {
+            margin-top: 18px;
+            background: linear-gradient(to bottom, #d35400, #962d00);
+            color: #fff;
+            border: 2px solid #ffd700;
+            padding: 12px 35px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+            font-family: 'Noto Serif', serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-thap-nhang:hover {
+            background: linear-gradient(to bottom, #e67e22, #d35400);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+        }
+
+        .message-box {
+            margin-top: 15px;
+            font-style: italic;
+            color: #ffd700;
+            font-size: 15px;
+            min-height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="temple-wrapper">
+        <!-- Mái Đền Thờ -->
+        <div class="roof-container">
+            <svg class="roof-svg" viewBox="0 0 500 60" preserveAspectRatio="none">
+                <path d="M0,50 Q120,50 250,10 Q380,50 500,50 L500,60 L0,60 Z" fill="#d4af37"/>
+                <path d="M10,55 Q125,42 250,18 Q375,42 490,55 L500,60 L0,60 Z" fill="#8b0000"/>
+            </svg>
+            <div class="temple-title">QUAN THÁNH ĐẾ QUÂN MIẾU</div>
+            <div class="couplet-bar">Nghĩa Thần Sáng Mãi Cùng Trời Đất — Trung Tín Lừng Danh Khắp Cổ Kim</div>
+        </div>
+
+        <!-- Bên Trong Điện Thờ -->
+        <div class="sanctuary-room">
+            <!-- Cột Đền Hai Bên -->
+            <div class="pillar left">
+                <div class="pillar-text">CHÍ TRUNG QUAN PHONG VÂN</div>
+            </div>
+            <div class="pillar right">
+                <div class="pillar-text">NGHĨA KHÍ BẠC TẬP TẦN</div>
+            </div>
+
+            <!-- Khung Khám Thờ -->
+            <div class="shrine-arch">
+                <!-- Hoành phi thư pháp -->
+                <div class="calligraphy-scroll">NGHĨA KHÍ THIÊN THU</div>
+
+                <!-- Đồ họa Quan Công Đọc Sách & Thanh Long Yển Nguyệt Đao -->
+                <div class="statue-container">
+                    <svg viewBox="0 0 300 300" width="100%" height="100%">
+                        <defs>
+                            <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#bdc3c7;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#7f8c8d;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffeaa7" />
+                                <stop offset="100%" style="stop-color:#fdcb6e" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- 1. THANH LONG YỂN NGUYỆT ĐAO (Phía sau lưng) -->
+                        <g id="guandao">
+                            <!-- Cán đao -->
+                            <rect x="210" y="20" width="8" height="260" fill="#5c3d11" rx="2"/>
+                            <!-- Rồng ngậm lưỡi đao -->
+                            <circle cx="214" cy="50" r="12" fill="url(#goldGrad)"/>
+                            <!-- Lưỡi đao hình bán nguyệt -->
+                            <path d="M214,45 C230,10 260,20 255,60 C250,90 220,100 214,95 Z" fill="url(#bladeGrad)" stroke="#d4af37" stroke-width="2"/>
+                            <!-- Tua rua đỏ dưới lưỡi đao -->
+                            <path d="M210,58 L200,80 L214,75 Z" fill="#e74c3c"/>
+                        </g>
+
+                        <!-- 2. QUAN CÔNG NGỒI ĐỌC SÁCH XUÂN THU -->
+                        <g id="guan-yu">
+                            <!-- Bào áo xanh lá (Áo Lục Bào) -->
+                            <path d="M80,130 C100,100 200,100 220,130 L240,260 C240,270 60,270 60,260 Z" fill="#1b5e20" stroke="#ffd700" stroke-width="2"/>
+                            
+                            <!-- Giáp ngực vàng bên trong -->
+                            <path d="M120,130 L180,130 L175,190 L125,190 Z" fill="url(#goldGrad)"/>
+
+                            <!-- Khuôn mặt đỏ gấc (Táo Giáp Diện) -->
+                            <path d="M125,75 C125,50 175,50 175,75 L170,115 C170,125 130,125 130,115 Z" fill="#b71c1c"/>
+
+                            <!-- Mũ Quan Công (Mũ Khôi GREEN) -->
+                            <path d="M120,65 C120,40 180,40 180,65 Z" fill="#004d40" stroke="#ffd700" stroke-width="2"/>
+                            <rect x="142" y="32" width="16" height="15" fill="#ffd700"/>
+
+                            <!-- Lông mày rồng & Mắt phụng -->
+                            <path d="M135,70 Q145,63 150,68" stroke="#000" stroke-width="3" fill="none"/>
+                            <path d="M165,68 Q170,63 180,70" stroke="#000" stroke-width="3" fill="none"/>
+
+                            <!-- Râu Dài 5 Chòm (Mỹ Nhiệm Công) -->
+                            <path d="M135,95 Q150,180 152,220 Q155,180 165,95 Z" fill="#111"/>
+
+                            <!-- Tay Cầm Sách Xuân Thu -->
+                            <!-- Tay áo -->
+                            <path d="M90,160 Q120,170 140,180" stroke="#1b5e20" stroke-width="18" stroke-linecap="round"/>
+                            <!-- Quyển Sách Xuân Thu -->
+                            <rect x="130" y="165" width="35" height="45" fill="#f5f5dc" stroke="#5d4037" stroke-width="2" transform="rotate(-10 130 165)"/>
+                            <line x1="138" y1="172" x2="138" y2="202" stroke="#b71c1c" stroke-width="2" transform="rotate(-10 130 165)"/>
+                            <line x1="145" y1="172" x2="145" y2="202" stroke="#333" stroke-width="1" transform="rotate(-10 130 165)"/>
+                            <line x1="152" y1="172" x2="152" y2="202" stroke="#333" stroke-width="1" transform="rotate(-10 130 165)"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Bàn Thờ & Lư Hương Đồng -->
+            <div class="altar-table">
+                <div class="incense-burner-wrap">
+                    <!-- 3 Cây nhang + Khói -->
+                    <div class="incense-sticks" id="incenseSticks">
+                        <div class="stick s1"></div>
+                        <div class="stick s2"></div>
+                        <div class="stick s3"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+
+                    <!-- Lư Hương Đồng SVG -->
+                    <svg viewBox="0 0 100 70" width="100%" height="100%">
+                        <!-- Chân Lư -->
+                        <path d="M20,55 L10,68 L25,65 Z" fill="#b8860b"/>
+                        <path d="M80,55 L90,68 L75,65 Z" fill="#b8860b"/>
+                        <path d="M50,58 L50,69 L58,67 Z" fill="#96710c"/>
+                        <!-- Thân Lư -->
+                        <path d="M15,25 C10,45 25,58 50,58 C75,58 90,45 85,25 Z" fill="url(#goldGrad)" stroke="#8a6d0b" stroke-width="2"/>
+                        <!-- Quai Lư 2 Bên -->
+                        <path d="M15,30 C-2,20 5,45 18,42" fill="none" stroke="#d4af37" stroke-width="4"/>
+                        <path d="M85,30 C102,20 95,45 82,42" fill="none" stroke="#d4af37" stroke-width="4"/>
+                        <!-- Miệng Lư -->
+                        <ellipse cx="50" cy="25" rx="36" ry="8" fill="#d4af37" stroke="#7a5e0b" stroke-width="2"/>
+                        <ellipse cx="50" cy="25" rx="30" ry="5" fill="#5c4308"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ô Nhập Nguyện Ước -->
+        <div class="control-panel">
+            <label class="input-label" for="wishInput">THÀNH TÂM KHẤN NGUYỆN</label>
+            <textarea id="wishInput" placeholder="Nhập lời nguyện ước của bạn (Cầu tài lộc, bình an, sự nghiệp, học hành...)..."></textarea>
+            <br>
+            <button class="btn-thap-nhang" onclick="thapNhang()">THẮP NHANG</button>
+            <div class="message-box" id="messageBox"></div>
+        </div>
+    </div>
+
+    <!-- Tệp Nhạc Nền -->
+    <audio id="bgMusic" loop>
+        <source src="Bông Cỏ May New Hòa Tấu.mp3" type="audio/mpeg">
+        <source src="nhac.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function thapNhang() {
+            const wish = document.getElementById('wishInput').value.trim();
+            const incenseSticks = document.getElementById('incenseSticks');
+            const messageBox = document.getElementById('messageBox');
+            const music = document.getElementById('bgMusic');
+
+            if (wish === "") {
+                alert("Vui lòng thành tâm nhập lời nguyện ước trước khi thắp nhang!");
+                return;
+            }
+
+            // Hiển thị nhang và bật hiệu ứng khói bay
+            incenseSticks.style.display = 'block';
+            incenseSticks.classList.add('active-smoke');
+
+            // Phát nhạc hòa tấu đính kèm
+            music.play().catch(err => {
+                console.log("Phát nhạc tự động bị trình duyệt chặn hoặc chưa tìm thấy tệp nhạc.");
+            });
+
+            // Hiển thị thông báo thành kính
+            messageBox.innerHTML = "🙏 Lời khấn nguyện đã được ghi nhận. Quan Thánh Đế Quân chứng giám bình an!";
+            
+            // Xóa chữ trong ô nhập
+            document.getElementById('wishInput').value = "";
+        }
+    </script>
+
+</body>
+</html>
