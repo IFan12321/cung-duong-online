@@ -45,43 +45,44 @@
             font-size: 1.1rem;
         }
 
-        /* Khung điện thờ Quan Công */
+        /* Khung chứa ảnh đền thờ */
         .shrine-wrapper {
             position: relative;
             width: 95%;
-            max-width: 900px;
+            max-width: 950px;
             aspect-ratio: 16 / 9;
             margin: 10px auto;
             border: 3px solid #d4af37;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 25px rgba(212, 175, 55, 0.4);
             overflow: hidden;
-            background: linear-gradient(180deg, #1f0a05 0%, #0d0402 100%);
+            background-color: #1a0f07;
         }
 
-        .temple-svg {
+        .shrine-img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
             display: block;
         }
 
-        /* Vị trí 3 cây nhang và khói cắm vào lư hương */
+        /* Vị trí cắm 3 cây nhang to và khói ngay miệng lư hương */
         .incense-position {
             position: absolute;
             left: 50%;
-            bottom: 25%;
+            bottom: 27%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             pointer-events: none;
-            z-index: 20;
+            z-index: 10;
         }
 
         /* 3 cây nhang to */
         .sticks-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             opacity: 0;
             transform: translateY(15px);
             transition: all 0.6s ease-in-out;
@@ -94,24 +95,24 @@
 
         .stick {
             width: 6px;
-            height: 60px;
-            background: linear-gradient(to bottom, #e67e22, #7e3d11);
+            height: 55px;
+            background: linear-gradient(to bottom, #d2691e, #652b0c);
             position: relative;
             border-radius: 2px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.8);
+            box-shadow: 0 0 4px rgba(0,0,0,0.8);
         }
 
-        /* Đầu nhang phát sáng mạnh */
+        /* Đầu nhang đỏ lửa phát sáng mạnh */
         .stick::before {
             content: '';
             position: absolute;
-            top: -7px;
+            top: -6px;
             left: -2px;
             width: 10px;
             height: 10px;
             background: #ff2200;
             border-radius: 50%;
-            box-shadow: 0 0 10px #ff3300, 0 0 20px #ff0000, 0 0 30px #ffaa00;
+            box-shadow: 0 0 10px #ff3300, 0 0 20px #ff0000, 0 0 30px #ff9900;
             animation: glow 1s infinite alternate ease-in-out;
         }
 
@@ -120,12 +121,12 @@
             100% { opacity: 1; transform: scale(1.4); }
         }
 
-        /* Khói nhang dày bay nghi ngút */
+        /* Hiệu ứng khói nhang dày bay lên */
         .smoke-group {
             position: absolute;
-            bottom: 50px;
+            bottom: 45px;
             display: flex;
-            gap: 16px;
+            gap: 15px;
             opacity: 0;
             transition: opacity 0.8s ease;
         }
@@ -135,10 +136,10 @@
         }
 
         .smoke-particle {
-            width: 16px;
-            height: 100px;
-            background: linear-gradient(to top, rgba(255,255,255,0.75), rgba(230,230,230,0));
-            filter: blur(8px);
+            width: 14px;
+            height: 90px;
+            background: linear-gradient(to top, rgba(255,255,255,0.7), rgba(230,230,230,0));
+            filter: blur(7px);
             border-radius: 50%;
             animation: rise 2.8s infinite linear;
         }
@@ -152,18 +153,18 @@
                 transform: translateY(0) scaleX(0.8) rotate(0deg);
                 opacity: 0;
             }
-            20% { opacity: 0.85; }
+            20% { opacity: 0.8; }
             100% {
-                transform: translateY(-140px) scaleX(4) rotate(25deg);
+                transform: translateY(-130px) scaleX(4) rotate(20deg);
                 opacity: 0;
             }
         }
 
-        /* Khung nhập nguyện ước */
+        /* Khung nhập lời nguyện */
         .control-box {
             width: 90%;
             max-width: 650px;
-            background: rgba(20, 12, 6, 0.95);
+            background: rgba(20, 12, 6, 0.9);
             border: 2px solid #d4af37;
             border-radius: 10px;
             padding: 20px;
@@ -236,81 +237,10 @@
         <p>“Hạo nhiên chính khí - Trung nghĩa thiên thu”</p>
     </div>
 
-    <!-- Khung Bàn Thờ Vẽ Mỹ Thuật Trực Tiếp Trong Code -->
+    <!-- Khung Bàn Thờ -->
     <div class="shrine-wrapper">
-        <svg class="temple-svg" viewBox="0 0 1000 562" xmlns="http://www.w3.org/2000/svg">
-            <!-- Nền Đền Thờ Cổ Kính -->
-            <rect width="1000" height="562" fill="#180b06"/>
-            
-            <!-- Cột Gỗ & Mái Đền -->
-            <rect x="50" y="0" width="60" height="562" fill="#3a1a0c" stroke="#5a2a14" stroke-width="4"/>
-            <rect x="890" y="0" width="60" height="562" fill="#3a1a0c" stroke="#5a2a14" stroke-width="4"/>
-            <path d="M 20 0 L 980 0 L 900 80 L 100 80 Z" fill="#4a150b" stroke="#d4af37" stroke-width="3"/>
-            
-            <!-- Hoành Phi: HẠO NHIÊN CHÍNH KHÍ -->
-            <rect x="250" y="15" width="500" height="55" fill="#800000" stroke="#ffd700" stroke-width="3" rx="5"/>
-            <text x="500" y="52" fill="#ffd700" font-family="'Be Vietnam Pro', sans-serif" font-weight="bold" font-size="28" text-anchor="middle">義 氣 千 秋 (QUAN THÁNH) </text>
-
-            <!-- Thanh Long Yển Nguyệt Đao Bằng Vàng Đứng Sau -->
-            <g transform="translate(680, 40)">
-                <rect x="20" y="40" width="10" height="420" fill="#2c2c2c" stroke="#d4af37" stroke-width="2"/>
-                <!-- Lưỡi Đao Rồng -->
-                <path d="M 25 40 C 25 10, 80 -20, 110 -50 C 100 20, 70 60, 25 90 Z" fill="url(#bladeGrad)" stroke="#ffd700" stroke-width="2"/>
-                <circle cx="25" cy="40" r="12" fill="#ff2200"/>
-            </g>
-
-            <!-- Quan Công Ngồi Đọc Sách Góc Chính Diện -->
-            <g transform="translate(320, 90)">
-                <!-- Ngai Vờ Gỗ Chạm Rồng -->
-                <rect x="40" y="100" width="280" height="260" fill="#4a1f0d" stroke="#d4af37" stroke-width="3" rx="10"/>
-                
-                <!-- Bào Y Xanh Bích -->
-                <path d="M 60 160 C 100 130, 260 130, 300 160 L 330 360 L 30 360 Z" fill="#006655" stroke="#ffd700" stroke-width="2"/>
-                <!-- Áo Đỏ Trong -->
-                <path d="M 150 160 L 210 160 L 200 280 L 160 280 Z" fill="#990000"/>
-                
-                <!-- Khuôn Mặt & Râu Dài -->
-                <circle cx="180" cy="110" r="32" fill="#a04000"/>
-                <!-- Mũ Quan Công -->
-                <path d="M 150 95 C 150 70, 210 70, 210 95 Z" fill="#004d40" stroke="#ffd700" stroke-width="2"/>
-                <circle cx="180" cy="72" r="6" fill="#ff0000"/>
-                <!-- Râu Dài Dày -->
-                <path d="M 160 125 Q 180 230 185 240 Q 190 230 200 125 Z" fill="#111"/>
-                
-                <!-- Bàn Tay Cầm Cuốn Sách Xuân Thu -->
-                <rect x="145" y="180" width="70" height="50" fill="#f5e6ca" stroke="#8b5a2b" stroke-width="2" rx="3"/>
-                <line x1="180" y1="180" x2="180" y2="230" stroke="#8b5a2b" stroke-width="2"/>
-            </g>
-
-            <!-- Bàn Thờ & Đồ Cúng (Bánh Chưng, Bưởi, Chuối) -->
-            <rect x="150" y="380" width="700" height="150" fill="#3d180a" stroke="#d4af37" stroke-width="3"/>
-            
-            <!-- Đĩa Mâm Bưởi & Chuối -->
-            <ellipse cx="300" cy="410" rx="60" ry="15" fill="#d4af37"/>
-            <circle cx="280" cy="395" r="18" fill="#2ecc71"/>
-            <circle cx="315" cy="395" r="18" fill="#2ecc71"/>
-            <circle cx="298" cy="375" r="18" fill="#f1c40f"/>
-            
-            <ellipse cx="700" cy="410" rx="60" ry="15" fill="#d4af37"/>
-            <path d="M 660 395 Q 700 360 740 395" stroke="#f1c40f" stroke-width="14" fill="none" stroke-linecap="round"/>
-
-            <!-- Lư Hương Đồng Góc Chính Diện -->
-            <g transform="translate(450, 370)">
-                <ellipse cx="50" cy="50" rx="50" ry="20" fill="#b8860b" stroke="#ffd700" stroke-width="2"/>
-                <rect x="10" y="20" width="80" height="35" fill="#8b6508" rx="5"/>
-                <circle cx="50" cy="38" r="12" fill="#5c4008"/>
-            </g>
-
-            <!-- Gradient Lưỡi Đao -->
-            <defs>
-                <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-                    <stop offset="50%" style="stop-color:#d4af37;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#aa771c;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-        </svg>
-
+        <img class="shrine-img" src="quancong.jpg" alt="Đền Thờ Quan Công Đọc Sách">
+        
         <!-- Vị trí 3 nén nhang to & làn khói dày đặc -->
         <div class="incense-position">
             <div class="smoke-group" id="smokeGroup">
