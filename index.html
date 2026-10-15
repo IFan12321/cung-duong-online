@@ -103,6 +103,19 @@
             box-shadow: 0 0 4px rgba(0,0,0,0.8);
         }
 
+        /* Phần chân nhang màu đỏ cắm ngập vào bát hương */
+        .stick::after {
+            content: '';
+            position: absolute;
+            bottom: -15px; /* Chiều dài phần chân nhang thò xuống bát hương */
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: #ff3300;
+            border-radius: 0 0 2px 2px;
+            box-shadow: 0 0 4px rgba(255, 51, 0, 0.7);
+        }
+
         /* Đầu nhang đỏ lửa phát sáng */
         .stick::before {
             content: '';
@@ -115,6 +128,7 @@
             border-radius: 50%;
             box-shadow: 0 0 8px #ff3300, 0 0 15px #ff0000, 0 0 25px #ff9900;
             animation: glow 1s infinite alternate ease-in-out;
+            z-index: 2;
         }
 
         @keyframes glow {
@@ -273,7 +287,7 @@
 
         /* Responsive cho màn hình nhỏ */
         @media(max-width: 768px) {
-            .side-banner { display: none; } /* Ẩn 2 bên trên mobile cho gọn giao diện */
+            .side-banner { display: none; }
         }
     </style>
 </head>
