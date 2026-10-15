@@ -1,3 +1,10 @@
+Dạ, em đã bỏ hẳn phần nhạc nền theo yêu cầu của chị rồi nhé.
+
+Bây giờ giao diện gọn gàng, trang nghiêm, chỉ tập trung vào việc nhập nguyện ước, thắp 3 cây nhang kèm hiệu ứng khói bay và hình ảnh Đền thờ Quan Công đọc sách với Thanh Long Đao phía sau.
+
+Chị copy toàn bộ mã nguồn sạch sẽ dưới đây dán vào index.html trên GitHub là xong nha:
+
+HTML
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -107,7 +114,7 @@
             letter-spacing: 4px;
         }
 
-        /* KHU VỰC TƯỢNG QUAN CÔNG & THANH LONG ĐAO (ĐÃ TỐI ƯU SVG) */
+        /* KHU VỰC TƯỢNG QUAN CÔNG & THANH LONG ĐAO */
         .statue-box {
             position: absolute;
             top: 55px;
@@ -342,18 +349,11 @@
         </div>
     </div>
 
-    <!-- Nhạc nền trực tuyến không sợ lỗi file -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://actions.google.com/sounds/v1/ambiences/asian_market_or_temple.ogg" type="audio/ogg">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf756.mp3" type="audio/mpeg">
-    </audio>
-
     <script>
         function thapNhang() {
             const wish = document.getElementById('wishInput').value.trim();
             const incenseSticks = document.getElementById('incenseSticks');
             const statusMessage = document.getElementById('statusMessage');
-            const music = document.getElementById('bgMusic');
 
             if (wish === "") {
                 alert("Xin thành tâm nhập lời nguyện ước trước khi thắp nhang!");
@@ -363,11 +363,9 @@
             incenseSticks.style.display = 'block';
             incenseSticks.classList.add('active-smoke');
 
-            music.play().catch(err => {
-                console.log("Trình duyệt chặn phát âm thanh tự động.");
-            });
-
             statusMessage.innerHTML = "🙏 Nguyện ước của bạn đã được Quan Thánh Đế Quân chứng giám!";
             document.getElementById('wishInput').value = "";
         }
-    </
+    </script>
+</body>
+</html>
