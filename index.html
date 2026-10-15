@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Điện Thờ Quan Công - Cúng Online</title>
+    <title>Đền Thờ Quan Thánh Đế Quân - Cúng Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #0c0301;
+            background-color: #0b0200;
             font-family: 'Noto Serif', serif;
             color: #f4e8c1;
             display: flex;
@@ -23,50 +23,51 @@
             padding: 15px 10px;
         }
 
-        .main-container {
+        .temple-box {
             width: 100%;
-            max-width: 680px;
-            background: #1a0602;
-            border: 3px solid #d4af37;
+            max-width: 700px;
+            background: #1a0601;
+            border: 4px solid #d4af37;
             border-radius: 12px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 10px 40px rgba(0,0,0,0.9);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.35), 0 15px 45px rgba(0,0,0,0.95);
             overflow: hidden;
         }
 
-        /* --- KHUNG CẢNH ĐIỆN THỜ CHÍNH DIỆN --- */
-        .shrine-view {
+        /* --- KHÔNG GIAN ĐIỆN THỜ THẬT --- */
+        .shrine-scene {
             position: relative;
             width: 100%;
-            height: 440px;
-            background-color: #2a0a04;
-            background-image: url('https://i.imgur.com/83uXm5g.jpg'); /* Hình ảnh điện thờ Quan Công đọc sách chính diện */
+            height: 450px;
+            /* Lấy hình ảnh điện thờ Quan Công cực kỳ chân thực, sang trọng như chùa lớn */
+            background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('https://i.imgur.com/83uXm5g.jpg');
             background-size: cover;
             background-position: center;
-            border-bottom: 4px solid #d4af37;
+            border-bottom: 5px solid #d4af37;
             display: flex;
             justify-content: center;
             align-items: flex-end;
         }
 
-        /* LƯ HƯƠNG & NHANG ĐẶT TẠI BÀN THỜ CHÍNH DIỆN */
-        .incense-burner-area {
+        /* KHU VỰC LƯ HƯƠNG Ở BÀN THỜ */
+        .burner-area {
             position: absolute;
-            bottom: 45px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 60px;
+            width: 70px;
+            height: 50px;
             z-index: 10;
         }
 
-        /* 3 CÂY NHANG & KHÓI BAY */
-        .incense-sticks {
+        /* 3 CÂY NHANG & KHÓI */
+        .incense-group {
             position: absolute;
-            top: -28px;
+            top: -32px;
             left: 50%;
             transform: translateX(-50%);
-            width: 36px;
-            height: 50px;
+            width: 35px;
+            height: 55px;
             display: none;
             z-index: 11;
         }
@@ -74,14 +75,14 @@
         .stick {
             position: absolute;
             bottom: 0;
-            width: 3px;
-            height: 45px;
-            background: linear-gradient(to top, #900c3f, #ff5733);
+            width: 2.5px;
+            height: 48px;
+            background: linear-gradient(to top, #7d1100, #ff5733);
             border-radius: 1px;
         }
-        .stick.s1 { left: 6px; transform: rotate(-5deg); }
+        .stick.s1 { left: 5px; transform: rotate(-5deg); }
         .stick.s2 { left: 16px; }
-        .stick.s3 { left: 26px; transform: rotate(5deg); }
+        .stick.s3 { left: 27px; transform: rotate(5deg); }
 
         /* Đốm đỏ đầu nhang */
         .stick::before {
@@ -93,48 +94,48 @@
             height: 5px;
             background: #ff2a2a;
             border-radius: 50%;
-            box-shadow: 0 0 8px #ff4d4d, 0 0 12px #fffa65;
+            box-shadow: 0 0 8px #ff4d4d, 0 0 12px #ffff66;
         }
 
         /* Làn khói nhang bay lên */
-        .smoke-particle {
+        .smoke {
             position: absolute;
-            top: -20px;
+            top: -22px;
             left: 50%;
             transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: rgba(255, 255, 255, 0.5);
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.55);
             border-radius: 50%;
             filter: blur(5px);
             opacity: 0;
         }
 
-        .active-smoke .smoke-particle {
-            animation: riseUpSmoke 3.5s infinite ease-out;
+        .active-smoke .smoke {
+            animation: riseSmoke 3.2s infinite ease-out;
         }
-        .active-smoke .smoke-particle:nth-child(2) { animation-delay: 1.2s; }
-        .active-smoke .smoke-particle:nth-child(3) { animation-delay: 2.4s; }
+        .active-smoke .smoke:nth-child(2) { animation-delay: 1.1s; }
+        .active-smoke .smoke:nth-child(3) { animation-delay: 2.2s; }
 
-        @keyframes riseUpSmoke {
-            0% { transform: translate(-50%, 0) scale(0.6); opacity: 0; }
-            25% { opacity: 0.75; }
-            100% { transform: translate(calc(-50% + 20px), -100px) scale(3); opacity: 0; }
+        @keyframes riseSmoke {
+            0% { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
+            30% { opacity: 0.7; }
+            100% { transform: translate(calc(-50% + 22px), -95px) scale(3.2); opacity: 0; }
         }
 
-        /* --- BẢNG ĐIỀU KHIỂN & KHẤN NGUYỆN --- */
-        .control-panel {
-            padding: 20px 25px;
-            background: linear-gradient(to bottom, #1d0703, #0d0200);
+        /* --- BẢNG ĐIỀU KHIỂN NGUYỆN ƯỚC --- */
+        .control-section {
+            padding: 25px 20px;
+            background: linear-gradient(to bottom, #1f0701, #0a0100);
             text-align: center;
         }
 
-        .panel-title {
+        .section-title {
             color: #ffd700;
-            font-size: 18px;
+            font-size: 19px;
             font-weight: bold;
             margin-bottom: 12px;
-            text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
             letter-spacing: 1px;
         }
 
@@ -154,20 +155,20 @@
         }
 
         textarea::placeholder {
-            color: #8a734e;
+            color: #8c734b;
         }
 
         textarea:focus {
             border-color: #f39c12;
-            box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+            box-shadow: 0 0 12px rgba(243, 156, 18, 0.6);
         }
 
         .btn-thap-nhang {
-            margin-top: 15px;
-            background: linear-gradient(to bottom, #e67e22, #a04000);
+            margin-top: 16px;
+            background: linear-gradient(to bottom, #e67e22, #963b00);
             color: #ffffff;
             border: 2px solid #ffd700;
-            padding: 12px 40px;
+            padding: 12px 42px;
             font-size: 17px;
             font-weight: bold;
             border-radius: 25px;
@@ -184,7 +185,7 @@
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
         }
 
-        .status-message {
+        .wish-status {
             margin-top: 15px;
             font-style: italic;
             color: #ffd700;
@@ -195,32 +196,66 @@
 </head>
 <body>
 
-    <div class="main-container">
-        <!-- Khung ảnh Điện Thờ Quan Công Chính Diện -->
-        <div class="shrine-view">
-            <!-- Khu vực thắp nhang vào lư hương -->
-            <div class="incense-burner-area">
-                <div class="incense-sticks" id="incenseSticks">
+    <div class="temple-box">
+        <!-- Khung cảnh điện thờ chân thực -->
+        <div class="shrine-scene">
+            <!-- Vị trí cắm 3 cây nhang và khói -->
+            <div class="burner-area">
+                <div class="incense-group" id="incenseGroup">
                     <div class="stick s1"></div>
                     <div class="stick s2"></div>
                     <div class="stick s3"></div>
-                    <div class="smoke-particle"></div>
-                    <div class="smoke-particle"></div>
-                    <div class="smoke-particle"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Khhu vực Nhập Nguyện Ước -->
-        <div class="control-panel">
-            <div class="panel-title">ĐỆ TRÌNH NGUYỆN ƯỚC</div>
-            <textarea id="wishInput" placeholder="Nhập lời nguyện ước của bạn gửi đến Quan Thánh Đế Quân..."></textarea>
+        <!-- Bảng nhập nguyện ước -->
+        <div class="control-section">
+            <div class="section-title">THÀNH TÂM KHẤN NGUYỆN QUAN THÁNH ĐẾ QUÂN</div>
+            <textarea id="wishInput" placeholder="Nhập nguyện ước của bạn (Cầu bình an, tài lộc, sự nghiệp...)...."></textarea>
             <br>
             <button class="btn-thap-nhang" onclick="thapNhang()">THẮP NHANG</button>
-            <div class="status-message" id="statusMessage"></div>
+            <div class="wish-status" id="wishStatus"></div>
         </div>
     </div>
 
     <!-- Tệp Âm Thanh Hòa Tấu -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="Bông Cỏ May New Hòa Tấu.mp3" type="audio/mpeg
+        <source src="Bông Cỏ May New Hòa Tấu.mp3" type="audio/mpeg">
+        <source src="nhac.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function thapNhang() {
+            const wish = document.getElementById('wishInput').value.trim();
+            const incenseGroup = document.getElementById('incenseGroup');
+            const wishStatus = document.getElementById('wishStatus');
+            const music = document.getElementById('bgMusic');
+
+            if (wish === "") {
+                alert("Xin thành tâm nhập lời nguyện ước trước khi thắp nhang!");
+                return;
+            }
+
+            // Hiển thị 3 cây nhang và làn khói bay
+            incenseGroup.style.display = 'block';
+            incenseGroup.classList.add('active-smoke');
+
+            // Bật nhạc hòa tấu
+            music.play().catch(err => {
+                console.log("Trình duyệt chặn phát nhạc tự động.");
+            });
+
+            // Hiển thị thông báo thành kính
+            wishStatus.innerHTML = "🙏 Nguyện ước của bạn đã được Quan Thánh Đế Quân chứng giám!";
+            
+            // Xóa ô nhập sau khi gửi
+            document.getElementById('wishInput').value = "";
+        }
+    </script>
+
+</body>
+</html>
