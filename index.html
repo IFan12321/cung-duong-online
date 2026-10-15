@@ -40,3 +40,364 @@
             padding: 15px 10px;
             border-bottom: 4px solid #d4af37;
         }
+
+        .temple-title {
+            color: #ffd700;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px #ff4500, 2px 2px 4px #000;
+        }
+
+        .couplet-sub {
+            color: #f39c12;
+            font-size: 13px;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* --- ĐIỆN THỜ QUAN CÔNG CHÍNH DIỆN --- */
+        .shrine-scene {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            background: radial-gradient(circle at center, #521305 0%, #1a0501 85%);
+            border-bottom: 5px solid #d4af37;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        /* Hoành Phi & Câu Đối 2 Bên */
+        .hoanh-phi {
+            position: absolute;
+            top: 15px;
+            background: #8b0000;
+            color: #ffd700;
+            padding: 6px 20px;
+            border: 2px solid #ffd700;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+            z-index: 2;
+        }
+
+        .pillar-left, .pillar-right {
+            position: absolute;
+            top: 0;
+            bottom: 60px;
+            width: 32px;
+            background: linear-gradient(to right, #500, #900, #400);
+            border-left: 2px solid #ffd700;
+            border-right: 2px solid #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        .pillar-left { left: 10px; }
+        .pillar-right { right: 10px; }
+
+        .pillar-text {
+            writing-mode: vertical-rl;
+            color: #ffd700;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        /* KHU VỰC TƯỢNG QUAN CÔNG & THANH LONG ĐAO */
+        .statue-box {
+            position: absolute;
+            top: 55px;
+            width: 320px;
+            height: 290px;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* BÀN THỜ VÀ LƯ HƯƠNG */
+        .altar-table {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 75px;
+            background: linear-gradient(to bottom, #6d2c06, #2d1001);
+            border-top: 4px solid #d4af37;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            z-index: 10;
+        }
+
+        /* Lư Hương & Nhang */
+        .burner-wrap {
+            position: relative;
+            top: -32px;
+            width: 90px;
+            height: 60px;
+        }
+
+        /* 3 CÂY NHANG & KHÓI */
+        .incense-sticks {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 36px;
+            height: 50px;
+            display: none;
+            z-index: 12;
+        }
+
+        .stick {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            height: 46px;
+            background: linear-gradient(to top, #7d1100, #ff5733);
+            border-radius: 1px;
+        }
+        .stick.s1 { left: 6px; transform: rotate(-5deg); }
+        .stick.s2 { left: 16px; }
+        .stick.s3 { left: 26px; transform: rotate(5deg); }
+
+        .stick::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1px;
+            width: 5px;
+            height: 5px;
+            background: #ff2a2a;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ff4d4d, 0 0 12px #fffa65;
+        }
+
+        /* Khói nhang bay lên */
+        .smoke-particle {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 50%;
+            filter: blur(5px);
+            opacity: 0;
+        }
+
+        .active-smoke .smoke-particle {
+            animation: riseSmoke 3.2s infinite ease-out;
+        }
+        .active-smoke .smoke-particle:nth-child(2) { animation-delay: 1.1s; }
+        .active-smoke .smoke-particle:nth-child(3) { animation-delay: 2.2s; }
+
+        @keyframes riseSmoke {
+            0% { transform: translate(-50%, 0) scale(0.5); opacity: 0; }
+            30% { opacity: 0.75; }
+            100% { transform: translate(calc(-50% + 22px), -95px) scale(3.2); opacity: 0; }
+        }
+
+        /* --- BẢNG NGUYỆN ƯỚC --- */
+        .control-panel {
+            padding: 22px 20px;
+            background: #140401;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 95px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #d4af37;
+            background: #080201;
+            color: #fff8dc;
+            font-family: 'Noto Serif', serif;
+            font-size: 15px;
+            resize: none;
+            outline: none;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.9);
+        }
+
+        textarea::placeholder {
+            color: #8c734b;
+        }
+
+        .btn-thap-nhang {
+            margin-top: 16px;
+            background: linear-gradient(to bottom, #d35400, #8d2a00);
+            color: #ffffff;
+            border: 2px solid #ffd700;
+            padding: 12px 42px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+            transition: all 0.3s ease;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .btn-thap-nhang:hover {
+            background: linear-gradient(to bottom, #e67e22, #d35400);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .status-message {
+            margin-top: 15px;
+            font-style: italic;
+            color: #ffd700;
+            font-size: 15px;
+            min-height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="temple-wrapper">
+        <!-- Mái Đền -->
+        <div class="roof-header">
+            <div class="temple-title">QUAN THÁNH ĐẾ QUÂN MIẾU</div>
+            <div class="couplet-sub">Nghĩa Khí Thiên Thu — Trung Tín Lừng Danh</div>
+        </div>
+
+        <!-- Điện Thờ Chính Diễn -->
+        <div class="shrine-scene">
+            <div class="hoanh-phi">NGHĨA KHÍ THIÊN THU</div>
+            
+            <div class="pillar-left"><div class="pillar-text">CHÍ TRUNG QUAN PHONG VÂN</div></div>
+            <div class="pillar-right"><div class="pillar-text">NGHĨA KHÍ BẠC TẬP TẦN</div></div>
+
+            <!-- Tượng Quan Công Đọc Sách & Thanh Long Yển Nguyệt Đao VẼ SVG ĐẸP TRỰC TIẾP -->
+            <div class="statue-box">
+                <svg viewBox="0 0 300 280" width="100%" height="100%">
+                    <defs>
+                        <linearGradient id="bladeGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="50%" stop-color="#cfd8dc"/>
+                            <stop offset="100%" stop-color="#78909c"/>
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#ffe082"/>
+                            <stop offset="100%" stop-color="#ffb300"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- THANH LONG YỂN NGUYỆT ĐAO (Phía Sau Lưng) -->
+                    <g id="blade">
+                        <rect x="230" y="10" width="8" height="250" fill="#4e342e" rx="2"/>
+                        <circle cx="234" cy="40" r="10" fill="url(#goldGrad)"/>
+                        <path d="M234,35 C255,5 285,15 280,55 C275,85 240,95 234,90 Z" fill="url(#bladeGrad)" stroke="#ffd700" stroke-width="2"/>
+                        <path d="M230,48 L218,70 L234,65 Z" fill="#d32f2f"/>
+                    </g>
+
+                    <!-- QUAN CÔNG NGỒI ĐỌC SÁCH XUÂN THU -->
+                    <g id="guanyu">
+                        <!-- Áo Lục Bào -->
+                        <path d="M70,110 C90,80 210,80 230,110 L250,260 C250,270 50,270 50,260 Z" fill="#2e7d32" stroke="#ffd700" stroke-width="2"/>
+                        <!-- Giáp ngực vàng -->
+                        <path d="M115,110 L185,110 L180,175 L120,175 Z" fill="url(#goldGrad)" stroke="#b76e00" stroke-width="1"/>
+                        
+                        <!-- Khuôn mặt đỏ gấc -->
+                        <path d="M120,55 C120,30 180,30 180,55 L175,100 C175,112 125,112 125,100 Z" fill="#c62828"/>
+                        
+                        <!-- Mũ Khôi xanh -->
+                        <path d="M115,48 C115,25 185,25 185,48 Z" fill="#004d40" stroke="#ffd700" stroke-width="2"/>
+                        <rect x="142" y="18" width="16" height="15" fill="#ffd700"/>
+
+                        <!-- Mắt phụng & Lông mày rồng -->
+                        <path d="M130,52 Q142,45 148,50" stroke="#000" stroke-width="3" fill="none"/>
+                        <path d="M162,50 Q168,45 180,52" stroke="#000" stroke-width="3" fill="none"/>
+
+                        <!-- Râu dài 5 chòm -->
+                        <path d="M130,80 Q150,170 152,220 Q154,170 170,80 Z" fill="#111"/>
+
+                        <!-- Tay & Quyển Sách Xuân Thu -->
+                        <path d="M85,145 Q115,155 135,165" stroke="#2e7d32" stroke-width="16" stroke-linecap="round"/>
+                        <rect x="125" y="145" width="38" height="50" fill="#fffde7" stroke="#4e342e" stroke-width="2" transform="rotate(-8 125 145)"/>
+                        <line x1="133" y1="152" x2="133" y2="187" stroke="#c62828" stroke-width="2" transform="rotate(-8 125 145)"/>
+                        <line x1="140" y1="152" x2="140" y2="187" stroke="#333" stroke-width="1" transform="rotate(-8 125 145)"/>
+                        <line x1="148" y1="152" x2="148" y2="187" stroke="#333" stroke-width="1" transform="rotate(-8 125 145)"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- BÀN THỜ VÀ LƯ HƯƠNG ĐỒNG VẼ SVG -->
+            <div class="altar-table">
+                <div class="burner-wrap">
+                    <!-- 3 Cây nhang + Khói -->
+                    <div class="incense-sticks" id="incenseSticks">
+                        <div class="stick s1"></div>
+                        <div class="stick s2"></div>
+                        <div class="stick s3"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+
+                    <!-- Lư Hương Đồng SVG -->
+                    <svg viewBox="0 0 100 70" width="100%" height="100%">
+                        <path d="M20,52 L10,66 L25,63 Z" fill="#b8860b"/>
+                        <path d="M80,52 L90,66 L75,63 Z" fill="#b8860b"/>
+                        <path d="M15,22 C10,42 25,55 50,55 C75,55 90,42 85,22 Z" fill="url(#goldGrad)" stroke="#8a6d0b" stroke-width="2"/>
+                        <ellipse cx="50" cy="22" rx="36" ry="8" fill="#ffd700" stroke="#7a5e0b" stroke-width="2"/>
+                        <ellipse cx="50" cy="22" rx="30" ry="5" fill="#4a3505"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ô Nhập Nguyện Ước -->
+        <div class="control-panel">
+            <textarea id="wishInput" placeholder="Nhập nguyện ước của bạn gửi đến Quan Thánh Đế Quân..."></textarea>
+            <br>
+            <button class="btn-thap-nhang" onclick="thapNhang()">THẮP NHANG</button>
+            <div class="status-message" id="statusMessage"></div>
+        </div>
+    </div>
+
+    <!-- Nhạc hòa tấu đính kèm -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="Bông Cỏ May New Hòa Tấu.mp3" type="audio/mpeg">
+        <source src="nhac.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function thapNhang() {
+            const wish = document.getElementById('wishInput').value.trim();
+            const incenseSticks = document.getElementById('incenseSticks');
+            const statusMessage = document.getElementById('statusMessage');
+            const music = document.getElementById('bgMusic');
+
+            if (wish === "") {
+                alert("Xin thành tâm nhập lời nguyện ước trước khi thắp nhang!");
+                return;
+            }
+
+            // Hiện 3 cây nhang và khói bay
+            incenseSticks.style.display = 'block';
+            incenseSticks.classList.add('active-smoke');
+
+            // Bật nhạc nền
+            music.play().catch(err => {
+                console.log("Trình duyệt hạn chế tự động phát nhạc.");
+            });
+
+            // Hiển thị thông báo
+            statusMessage.innerHTML = "🙏 Nguyện ước của bạn đã được Quan Thánh Đế Quân chứng giám!";
+            
+            // Xóa ô văn bản
+            document.getElementById('wishInput').value = "";
+        }
+    </script>
+
+</body>
+</html>
