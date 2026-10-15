@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đền Thờ Quan Công - Cầu An & Cúng dường</title>
+    <title>Đền Thờ Quan Công - Cầu An & Cúng Dường</title>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700;800&family=Playfair+Display:ital,wght@1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            user-select: none;
         }
 
         body {
@@ -20,7 +21,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-bottom: 30px;
+            padding-bottom: 40px;
             overflow-x: hidden;
         }
 
@@ -44,6 +45,28 @@
             font-style: italic;
             color: #d4af37;
             font-size: 1rem;
+        }
+
+        /* Dòng chữ chạy liên tục */
+        .running-ticker {
+            width: 90%;
+            max-width: 950px;
+            background: rgba(20, 12, 6, 0.85);
+            border: 1px solid #b38728;
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin: 8px auto 5px auto;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+
+        .running-ticker marquee {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #ffd700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
         }
 
         /* Khung chứa ảnh đền thờ */
@@ -71,7 +94,7 @@
         .incense-position {
             position: absolute;
             left: 50%;
-            bottom: 39%; /* Đã đưa dịch lên bát hương to phía sau */
+            bottom: 39%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
@@ -80,7 +103,6 @@
             z-index: 10;
         }
 
-        /* 3 cây nhang */
         .sticks-group {
             display: flex;
             gap: 8px;
@@ -103,15 +125,15 @@
             box-shadow: 0 0 4px rgba(0,0,0,0.8);
         }
 
-        /* Phần chân nhang màu đỏ cắm ngập vào bát hương */
+        /* Chân nhang màu đỏ cắm ngập vào lư */
         .stick::after {
             content: '';
             position: absolute;
-            bottom: -15px; /* Chiều dài phần chân nhang thò xuống bát hương */
+            bottom: -15px;
             left: 0;
             width: 100%;
             height: 15px;
-            background: #b55328;
+            background: #ff3300;
             border-radius: 0 0 2px 2px;
             box-shadow: 0 0 4px rgba(255, 51, 0, 0.7);
         }
@@ -136,7 +158,7 @@
             100% { opacity: 1; transform: scale(1.4); }
         }
 
-        /* Khói nhang bay nhiều và dày hơn */
+        /* Khói nhang bay */
         .smoke-group {
             position: absolute;
             bottom: 35px;
@@ -216,17 +238,16 @@
             100% { opacity: 1; filter: brightness(1.3); }
         }
 
-        /* Khung nhập lời nguyện */
+        /* KHUNG NHẬP NGUYỆN & HÒM CÔNG ĐỨC */
         .control-box {
             width: 90%;
             max-width: 650px;
-            background: rgba(20, 12, 6, 0.9);
+            background: rgba(20, 12, 6, 0.95);
             border: 2px solid #d4af37;
-            border-radius: 10px;
-            padding: 18px;
-            margin: 12px auto;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px auto;
             box-shadow: 0 8px 25px rgba(0,0,0,0.8);
-            text-align: center;
         }
 
         .control-box h2 {
@@ -234,11 +255,12 @@
             color: #ffd700;
             font-size: 1.05rem;
             margin-bottom: 10px;
+            text-align: center;
         }
 
         .wish-textarea {
             width: 100%;
-            height: 75px;
+            height: 70px;
             background-color: #0a0502;
             border: 1px solid #b38728;
             border-radius: 6px;
@@ -248,6 +270,7 @@
             font-family: 'Montserrat', sans-serif;
             resize: none;
             outline: none;
+            margin-bottom: 12px;
         }
 
         .wish-textarea:focus {
@@ -255,10 +278,123 @@
             box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
         }
 
+        /* Chọn mệnh giá tiền: 50k, 100k, 200k, 500k */
+        .denomination-selector {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            justify-content: center;
+        }
+
+        .den-btn {
+            background: #1a0f07;
+            border: 1px solid #b38728;
+            color: #ffd700;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .den-btn.selected {
+            background: #d4af37;
+            color: #120a04;
+            font-weight: 700;
+        }
+
+        /* Khu vực bỏ tiền vào hòm */
+        .donation-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 5, 2, 0.8);
+            border: 1px dashed #d4af37;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
+
+        .donation-info h3 {
+            font-size: 0.95rem;
+            color: #ffd700;
+            margin-bottom: 4px;
+        }
+
+        .donation-info p {
+            font-size: 0.8rem;
+            color: #c5a059;
+        }
+
+        .money-box-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .donation-box {
+            width: 75px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b0000, #4a0000);
+            border: 2px solid #ffd700;
+            border-radius: 6px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .donation-box:hover {
+            transform: scale(1.05);
+        }
+
+        .donation-box .slot {
+            width: 35px;
+            height: 4px;
+            background: #000;
+            border-radius: 2px;
+            position: absolute;
+            top: 10px;
+            border: 1px solid #ffd700;
+        }
+
+        .donation-box span {
+            font-size: 0.65rem;
+            color: #ffd700;
+            font-weight: 700;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .money-stack {
+            position: relative;
+            width: 60px;
+            height: 35px;
+            background: linear-gradient(135deg, #2e8b57, #1c542d);
+            border: 1px solid #ffd700;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.2s;
+        }
+
+        .money-stack:hover {
+            transform: scale(1.05);
+        }
+
         .btn-incense {
-            margin-top: 10px;
             width: 100%;
-            padding: 11px;
+            padding: 12px;
             background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%);
             color: #120a04;
             font-family: 'Be Vietnam Pro', sans-serif;
@@ -283,9 +419,9 @@
             font-style: italic;
             min-height: 20px;
             color: #ffd700;
+            text-align: center;
         }
 
-        /* Responsive cho màn hình nhỏ */
         @media(max-width: 768px) {
             .side-banner { display: none; }
         }
@@ -293,16 +429,25 @@
 </head>
 <body>
 
+    <!-- Nhạc thiền -->
+    <audio id="meditationAudio" src="thien.mp3" preload="auto" loop></audio>
+
     <div class="header-title">
         <h1>ĐỀN THỜ QUAN CÔNG</h1>
         <p>“Hạo nhiên chính khí - Trung nghĩa thiên thu”</p>
+    </div>
+
+    <!-- Dòng chữ chạy liên tục -->
+    <div class="running-ticker">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            🙏 Cầu mong mọi người dù mang Tôn giáo nào cũng sống an bình, chánh trực ✨ Vạn sự cát tường, tâm thanh tịnh an nhiên thiên thu 🙏
+        </marquee>
     </div>
 
     <!-- Khung Bàn Thờ -->
     <div class="shrine-wrapper">
         <img class="shrine-img" src="quancong.jpg" alt="Đền Thờ Quan Công Đọc Sách">
         
-        <!-- Hiệu ứng chữ chớp tắt 2 bên -->
         <div class="side-banner left" id="bannerLeft">
             <span>VẠN SỰ<br>KHỞI ĐẦU NAN</span>
         </div>
@@ -310,7 +455,6 @@
             <span>GIAN NAN<br>ĐỪNG CÓ NẢN</span>
         </div>
 
-        <!-- Vị trí 3 nén nhang & làn khói dày cắm vào bát hương to phía sau -->
         <div class="incense-position">
             <div class="smoke-group" id="smokeGroup">
                 <div class="smoke-particle"></div>
@@ -327,20 +471,82 @@
 
     <!-- Bảng tương tác -->
     <div class="control-box">
-        <h2>NHẬP LỜI NGUYỆN ƯỚC THÀNH TÂM</h2>
+        <h2>NHẬP LỜI NGUYỆN ƯỚC & CÚNG DƯỜNG</h2>
         <textarea id="wishInput" class="wish-textarea" placeholder="Ví dụ: Cầu mong gia đạo bình an, công việc hanh thông, vạn sự cát tường..."></textarea>
+        
+        <!-- Chọn mệnh giá tiền: 50k, 100k, 200k, 500k -->
+        <div class="denomination-selector">
+            <button class="den-btn selected" onclick="setDenomination(50000, this)">50.000đ</button>
+            <button class="den-btn" onclick="setDenomination(100000, this)">100.000đ</button>
+            <button class="den-btn" onclick="setDenomination(200000, this)">200.000đ</button>
+            <button class="den-btn" onclick="setDenomination(500000, this)">500.000đ</button>
+        </div>
+
+        <!-- Hòm công đức & tiền cúng dường -->
+        <div class="donation-section">
+            <div class="donation-info">
+                <h3>Hòm Công Đức Phước Điền</h3>
+                <p>Bấm tờ tiền để bỏ vào hòm</p>
+            </div>
+            <div class="money-box-container">
+                <div class="money-stack" id="moneyNote" onclick="dropMoney()" title="Bấm để thả tiền vào hòm">
+                    <span id="noteText">50k</span>
+                </div>
+                <div class="donation-box" onclick="dropMoney()">
+                    <div class="slot"></div>
+                    <span>HÒM CÔNG ĐỨC</span>
+                </div>
+            </div>
+        </div>
+
         <button class="btn-incense" onclick="thapNhang()">🙏 Thắp Nhang & Gửi Nguyện Ước</button>
         <div id="message"></div>
     </div>
 
     <script>
-        function thapNhang() {
-            const wish = document.getElementById('wishInput').value.trim();
+        let currentDonation = 50000;
+
+        function setDenomination(amount, btnElement) {
+            currentDonation = amount;
+            document.querySelectorAll('.den-btn').forEach(b => b.classList.remove('selected'));
+            btnElement.classList.add('selected');
+            
+            const noteText = document.getElementById('noteText');
+            if (amount >= 1000000) {
+                noteText.innerText = (amount / 1000000) + 'Tr';
+            } else {
+                noteText.innerText = (amount / 1000) + 'k';
+            }
+        }
+
+        function dropMoney() {
+            const moneyNote = document.getElementById('moneyNote');
+            moneyNote.style.transform = 'translateY(25px) scale(0.5)';
+            moneyNote.style.opacity = '0';
+
+            setTimeout(() => {
+                moneyNote.style.transition = 'none';
+                moneyNote.style.transform = 'translateY(0) scale(1)';
+                moneyNote.style.opacity = '1';
+                setTimeout(() => {
+                    moneyNote.style.transition = 'all 0.2s';
+                }, 50);
+            }, 300);
+
+            const msg = document.getElementById('message');
+            msg.style.color = '#ffd700';
+            msg.innerText = `💵 Đã bỏ ${currentDonation.toLocaleString('vi-VN')} VNĐ vào hòm công đức. Thành tâm công đức vô lượng!`;
+        }
+
+        async function thapNhang() {
+            const wishInput = document.getElementById('wishInput');
+            const wish = wishInput.value.trim();
             const sticksGroup = document.getElementById('sticksGroup');
             const smokeGroup = document.getElementById('smokeGroup');
             const bannerLeft = document.getElementById('bannerLeft');
             const bannerRight = document.getElementById('bannerRight');
             const message = document.getElementById('message');
+            const audio = document.getElementById('meditationAudio');
 
             if (!wish) {
                 message.style.color = '#ff6b6b';
@@ -348,14 +554,46 @@
                 return;
             }
 
-            // Kích hoạt hiệu ứng nhang, khói và chữ chớp tắt 2 bên
-            sticksGroup.classList.add('active');
-            smokeGroup.classList.add('active');
-            bannerLeft.classList.add('active');
-            bannerRight.classList.add('active');
+            try {
+                // Gửi dữ liệu nguyện ước và tiền cúng dường xuống Backend
+                const response = await fetch('/api/thap-nhang', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        wish: wish, 
+                        donation: currentDonation 
+                    })
+                });
 
-            message.style.color = '#00ffcc';
-            message.innerText = '✨ Đã thành tâm thắp 3 nén nhang lớn. Cầu mong nguyện ước của bạn được Quan Thánh chứng giám!';
+                const result = await response.json();
+
+                if (result.success) {
+                    // Kích hoạt hiệu ứng nhang, khói và chữ chạy 2 bên
+                    sticksGroup.classList.add('active');
+                    smokeGroup.classList.add('active');
+                    bannerLeft.classList.add('active');
+                    bannerRight.classList.add('active');
+
+                    message.style.color = '#00ffcc';
+                    message.innerText = '✨ ' + result.message;
+                    
+                    // Phát nhạc thiền
+                    audio.play().catch(error => {
+                        console.log("Trình duyệt chặn phát âm thanh tự động:", error);
+                    });
+
+                    // Làm sạch ô nhập
+                    wishInput.value = '';
+                } else {
+                    message.style.color = '#ff6b6b';
+                    message.innerText = result.message;
+                }
+            } catch (error) {
+                message.style.color = '#ff6b6b';
+                message.innerText = 'Lỗi kết nối đến máy chủ Backend!';
+            }
         }
     </script>
 
